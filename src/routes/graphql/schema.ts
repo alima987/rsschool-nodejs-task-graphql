@@ -301,7 +301,7 @@ const prismaClient: PrismaClient = new PrismaClient();
 
       },
       subscribeTo: { 
-      type: new GraphQLNonNull(UserType),
+      type: new GraphQLNonNull(GraphQLString),
       args: {
         userId: { type: new GraphQLNonNull(UUIDType) },
         authorId: { type: new GraphQLNonNull(UUIDType) },
@@ -311,7 +311,7 @@ const prismaClient: PrismaClient = new PrismaClient();
           data: { subscriberId: userId, authorId: authorId },
         });
 
-        return await prismaClient.user.findFirst({ where: { id: userId } });
+        return 'Subscription created successfully';
       },
     },
     unsubscribeFrom: {
