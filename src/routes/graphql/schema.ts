@@ -26,27 +26,27 @@ const prismaClient: PrismaClient = new PrismaClient();
   })
   const CreateUserInputType = new GraphQLInputObjectType({
     name: 'CreateUserInput',
-    fields: {
+    fields: () => ({
       name: { type: new GraphQLNonNull(GraphQLString) },
       balance: { type: new GraphQLNonNull(GraphQLFloat) },
-    },
+    }),
   });
   
   const ChangeUserInputType = new GraphQLInputObjectType({
     name: 'ChangeUserInput',
-    fields: {
+    fields: () => ({
       name: { type: GraphQLString },
       balance: { type: GraphQLFloat },
-    },
+    }),
   });
   
   const CreatePostInputType = new GraphQLInputObjectType({
     name: 'CreatePostInput',
-    fields: {
+    fields: () => ({
       title: { type: new GraphQLNonNull(GraphQLString) },
       content: { type: new GraphQLNonNull(GraphQLString) },
       authorId: { type: new GraphQLNonNull(UUIDType) },
-    },
+    }),
   });
   
   export const ChangePostInputType = new GraphQLInputObjectType({
@@ -60,21 +60,21 @@ const prismaClient: PrismaClient = new PrismaClient();
   
   const CreateProfileInputType = new GraphQLInputObjectType({
     name: 'CreateProfileInput',
-    fields: {
-      isMale: { type: new GraphQLNonNull(GraphQLBoolean) },
-      yearOfBirth: { type: (GraphQLInt) },
+    fields: () => ({
+      isMale: { type: GraphQLBoolean },
+      yearOfBirth: { type: GraphQLInt },
       userId: { type: new GraphQLNonNull(UUIDType) },
       memberTypeId: { type: new GraphQLNonNull(MemberTypeIdEnum) },
-    },
+    }),
   });
   
   const ChangeProfileInputType = new GraphQLInputObjectType({
     name: 'ChangeProfileInput',
-    fields: {
+    fields: () => ({
       isMale: { type: GraphQLBoolean },
       yearOfBirth: { type: GraphQLInt },
       memberTypeId: { type: MemberTypeIdEnum },
-    },
+    }),
   });
   const MemberType: GraphQLObjectType = new GraphQLObjectType({
     name: 'MemberType',
