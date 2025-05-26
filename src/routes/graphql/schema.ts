@@ -195,7 +195,7 @@ const prismaClient: PrismaClient = new PrismaClient();
     },
     posts: {
       type: new GraphQLList(PostType),
-      resolve: async () => await prismaClient.user.findMany(),
+      resolve: async () => await prismaClient.post.findMany(),
     },
     users: {
        type: new GraphQLList(UserType),

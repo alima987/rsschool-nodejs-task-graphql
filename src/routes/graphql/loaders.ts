@@ -46,7 +46,7 @@ export const getLoaders = (prisma: PrismaClient) => {
           postMap[p.authorId] ? postMap[p.authorId].push(p) : (postMap[p.authorId] = [p]);
         });
 
-        return userIds.map((key: string) => postMap[key] ?? null);
+        return userIds.map((key: string) => postMap[key] ?? []);
       },
     ),
     memberTypeLoader: new DataLoader<string, MemberType>(
